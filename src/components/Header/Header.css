@@ -27,6 +27,37 @@
    cursor: pointer;
 }
 
+.menu_bar {
+   width: 280px;
+   background-color: transparent;
+   transform: translateX(0);
+   visibility: visible;
+   box-shadow: 0 0;
+   overflow: hidden;
+   color: #000;
+   height: calc(100vh - 100%);
+   position: absolute;
+   top: 100%;
+   z-index: 990;
+   display: flex;
+   flex-direction: column;
+   left: -100%;
+   transition: 850ms;
+}
+.menu_bars_active {
+   width: 280px;
+   background-color: #000;
+   color: #EBECEC;
+   left: 0;
+   transition: 350ms;
+   top: 100%;
+   z-index: 990;
+   display: flex;
+   flex-direction: column;
+   left: -100%;
+   transition: 850ms;
+}
+
 .menu_user {
    display: flex;
    gap: 1rem;

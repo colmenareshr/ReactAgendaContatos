@@ -21,63 +21,47 @@ body {
 
 .main {
   width: 100%;
+  min-height: 100vh;
+  padding: 0 16px 20px;
+  display: grid;
+  grid-template-columns: 280px 1100px; 
+
+  
 }
 
-.main_container {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-.container_elements {
-  background: #fff;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  cursor: default;
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(15rem, 3fr));
-  height: 3.125rem;
+
+.container_titles {
+  height: 50px;
   width: 100%;
   margin-bottom: 0.5rem;
-  overflow: hidden;
   padding: 10px;
-}
-.cont_name {
-  padding-left: 10px;
+  cursor: default;
+  position: sticky;
+  display: table;
+  table-layout: fixed;
+  overflow: hidden;
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
 .main_elements {
+  display: table-cell;
   letter-spacing: 0.01785714em;
   font-family: Roboto, sans-serif;
   font-size: 0.874rem;
   font-weight: 500;
   line-height: 1.25rem;
-
-  /* display: table-cell;
-   overflow: hidden;
-   padding: 4px;
-   text-overflow: ellipsis;
-   vertical-align: middle;
-   white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
 }
 
-.contatos_wrap {
+.contatos_wraper {
   width: 100%;
-}
-
-@media screen and (max-width: 480px) {
-  .header {
-    background-color: rgba(255, 255, 255, 1);
-    font-size: 13px;
-    line-height: 27px;
-    font-family: Roboto, sans-serif;
-    z-index: 986;
-  }
-  .header .header_wrap {
-    display: block;
-  }
-
-  .header_wrap {
-    min-width: 320px;
-    position: relative;
-  }
+  display: table;
+  table-layout: fixed;
+  background-color: #fff;
+  width: 100%;
+  transition: .1s all;
 }

@@ -1,36 +1,39 @@
+/* .contatos_container {
+  width: 100%;
+  background-image: linear-gradient(#fff, 57px, #fafafa, 57px);
+} */
 .contatos_title {
-   letter-spacing: .07272727em;
-   font-family: Roboto, sans-serif;
-   font-size: .688rem;
-   font-weight: 500;
-   line-height: 1rem;
-   text-transform: uppercase;
-   display: flex;
-   padding: 20px;
-   max-height: 20px;
+  letter-spacing: 0.07272727em;
+  font-family: Roboto, sans-serif;
+  font-size: 0.688rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+  display: flex;
+  padding: 20px;
+  max-height: 20px;
 }
 
 .contatos_items_container {
-   width: 100%;
-   display: flex;
-   flex-direction: column;
+  width: 100%;
+  display: table;
+  table-layout: fixed;
+  position: relative;
 }
 
 .contatos_items {
-   display: grid;
-   gap: 1rem;
-   grid-template-columns: repeat(auto-fit, minmax(15rem, 3fr));
-   border-bottom: 1px solid #F1F3F4;
-   padding: 20px;
-   cursor: pointer;
+  display: table-cell;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+  white-space: nowrap;
+  border-bottom: 1px solid #f1f3f4;
+  padding: 20px;
+  cursor: pointer;
+  
 }
 
 .contatos_items:hover {
-   background-color: #e7eeff;
-   background-size: 100% 112px;
-}
-.item_celd {
-   text-align: left;
-   font-size: 14px;
-   line-height: 20px;
+  background-color: #e7eeff;
+  background-size: 100% 112px;
 }
