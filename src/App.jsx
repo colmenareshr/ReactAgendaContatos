@@ -4,6 +4,8 @@ import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   /* HOOKS */
@@ -53,6 +55,23 @@ function App() {
         console.log(err.message);
       });
   };
+/*METODO DELETE | ELIMINAR CONTACTO */
+  const deleteContact = async (id) => {
+    await fetch(`http://localhost:3000/contatos/${id}`,{
+      method: 'DELETE',
+    }).then((response) =>{
+      if(response.status === 200) {
+        setContacts(
+          contacts.filter((contato) =>{
+            return contato.id !== id;
+          })
+        );
+      }else{
+        return;
+      }
+    })
+  }
+
   /* API FIN */
   /* FUNCIONAMIENTO DEL FORMULARIO */
   const handleSubmit = (e) => {
@@ -75,6 +94,9 @@ function App() {
             <div className='cont_name main_elements'>Nombre</div>
             <div className='cont_email main_elements'>Correo electrónico</div>
             <div className='cont_tel main_elements'>Número de teléfono</div>
+            <div className='cont_fechar main_elements'>
+            </div>
+
           </div>
           <div className='contatos_title'>
             Contatos
@@ -88,6 +110,7 @@ function App() {
                   nome={contato.nome}
                   email={contato.email}
                   telefone={contato.telefone}
+                  deleteContacts={() => deleteContact(contato.id)}
                 />
               );
             })}
