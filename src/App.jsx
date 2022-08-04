@@ -77,6 +77,7 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addContacts(nomes, emails, telefones);
+    e.target.reset();
     console.log('Contacto Agregado', e.target.value);
   };
   /* FORMULARIO FIN */
