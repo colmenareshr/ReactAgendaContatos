@@ -1,10 +1,10 @@
 import './SideBar.css';
-function SideBar() {
+function SideBar({mostrar}) {
   return (
     <div className='sidebar_container'>
       <div className='sidebar_wraper'>
         <div className='btn_add'>
-          <button className='sidebar_btn'>
+          <button className='sidebar_btn' onClick={mostrar}>
             <span>
               <svg width='35' height='36' viewBox='0 0 36 36'>
                 <path fill='#1a73e8' d='M16 16v14h4V20z'></path>
