@@ -1,20 +1,31 @@
 import Header from './components/Header/Header';
 import Contatos from './components/Contatos/Contatos';
 import './App.css';
-import dados from '/db.json';
+// import dados from '/db.json';
 import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-  const AGENDA = dados.contatos;
-
+  /*AGREGAR VENTANA MODAL CREAR*/
   const [showModal, setShowModal] = useState(false);
-
   const handleShowModal = () => {
-    console.log('BOTÓN MOSTRADO');
     setShowModal(!showModal);
   };
+  /*FIN VENTANA */
+  /* API INICIO */
+  const [contacts, setContacts] = useState([]);
+  useEffect(() => {
+    fetch('http://localhost:3000/contatos')
+      .then((response) => response.json())
+      .then((data) => {
+        setContacts(data)
+      })
+      .catch((err) => {
+        console.log(err.message);
+      })
+  });
+  /* API FIN */
 
   return (
     <div className='App'>
@@ -33,10 +44,10 @@ function App() {
           </div>
           <div className='contatos_title'>
             Contatos
-            <span>({AGENDA.length})</span>
+            <span>({contacts.length})</span>
           </div>
           <div className='contatos_wraper'>
-            {AGENDA.map(function (contato) {
+            {contacts.map(function (contato) {
               return (
                 <Contatos
                   key={contato.id}
@@ -48,7 +59,6 @@ function App() {
             })}
           </div>
         </div>
-
         <ModalCreate state={showModal} changeState={setShowModal} />
       </main>
     </div>
