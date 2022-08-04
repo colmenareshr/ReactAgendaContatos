@@ -3,10 +3,18 @@ import Contatos from './components/Contatos/Contatos';
 import './App.css';
 import dados from '/db.json';
 import SideBar from './components/SideBar/SideBar';
-import ContatosForm from './components/ContatosForm/ContatosForm';
+import ModalCreate from './components/Modales/ModalCreate';
+import { useState } from 'react';
 
 function App() {
   const AGENDA = dados.contatos;
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleShowModal = () => {
+    console.log('BOTÓN MOSTRADO');
+    setShowModal(!showModal);
+  };
 
   return (
     <div className='App'>
@@ -15,7 +23,7 @@ function App() {
       </header>
       <main className='main'>
         <div className='sidebar_wraper'>
-          <SideBar />
+          <SideBar mostrar={handleShowModal} />
         </div>
         <div className='main_container-wraper'>
           <div className='container_titles'>
@@ -28,7 +36,6 @@ function App() {
             <span>({AGENDA.length})</span>
           </div>
           <div className='contatos_wraper'>
-            {/* <div className='contatos_control'></div> */}
             {AGENDA.map(function (contato) {
               return (
                 <Contatos
@@ -42,7 +49,7 @@ function App() {
           </div>
         </div>
 
-        {/* <ContatosForm /> */}
+        <ModalCreate state={showModal} changeState={setShowModal} />
       </main>
     </div>
   );

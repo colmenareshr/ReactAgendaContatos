@@ -1,8 +1,22 @@
 .contatos_container {
-   width: 100%;
-   height: 100%;
-   visibility: visible;
-   opacity: 1;
-   margin-left: 0;
-   background-color: #fff;
+  width: 100%;
+  visibility: visible;
+  padding: 5px 85px 0 0;
+  opacity: 1;
+  margin-left: 0;
+  background-color: #fff;
+  display: flex;
+  position: relative;
+}
+
+.input_elements {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input_containers {
+  display: flex;
+  gap: 1rem;
 }
