@@ -3,23 +3,49 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 import ContatosForm from '../ContatosForm/ContatosForm';
 
-function ModalCreate({ state, changeState }) {
+function ModalCreate({
+  state,
+  changeState,
+  contacts,
+  addContacts,
+  submitContacts,
+  nombres,
+  enviarNombres,
+  emails,
+  enviarEmails,
+  telefones,
+  enviarTelefones,
+  sendForm
+}) {
   return (
     <>
-      {
-        state &&
-      <ModalOverlay>
-        <ModalContainer>
-          <ModalHeader>
-            <h3>Crear novo contato</h3>
-          </ModalHeader>
-          <CloseButton>
-            <FontAwesomeIcon icon={faClose} onClick={()=> changeState(!state)} />
-          </CloseButton>
-          <ContatosForm />
-        </ModalContainer>
-      </ModalOverlay>
-      }
+      {state && (
+        <ModalOverlay>
+          <ModalContainer>
+            <ModalHeader>
+              <h3>Crear novo contato</h3>
+            </ModalHeader>
+            <CloseButton>
+              <FontAwesomeIcon
+                icon={faClose}
+                onClick={() => changeState(!state)}
+              />
+            </CloseButton>
+            <ContatosForm
+              contactos={contacts}
+              agregaContactos={addContacts}
+              enviarContactos={submitContacts}
+              nome={nombres}
+              sendNome={enviarNombres}
+              email={emails}
+              sendEmail={enviarEmails}
+              telefone={telefones}
+              sendTelefone={enviarTelefones}
+              enviarFormulario={sendForm}
+            />
+          </ModalContainer>
+        </ModalOverlay>
+      )}
     </>
   );
 }

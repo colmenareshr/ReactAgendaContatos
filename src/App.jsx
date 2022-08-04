@@ -1,32 +1,66 @@
 import Header from './components/Header/Header';
 import Contatos from './components/Contatos/Contatos';
-import './App.css';
-// import dados from '/db.json';
 import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
+import './App.css';
 
 function App() {
-  /*AGREGAR VENTANA MODAL CREAR*/
+  /* HOOKS */
+  const [nomes, setNomes] = useState('');
+  const [emails, setEmails] = useState('');
+  const [telefones, setTelefones] = useState('');
+  const [contacts, setContacts] = useState([]);
+
   const [showModal, setShowModal] = useState(false);
+  /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
     setShowModal(!showModal);
   };
   /*FIN VENTANA */
-  /* API INICIO */
-  const [contacts, setContacts] = useState([]);
+  /* API INICIO | MÉTODO GET */
   useEffect(() => {
     fetch('http://localhost:3000/contatos')
       .then((response) => response.json())
       .then((data) => {
-        setContacts(data)
+        setContacts(data);
       })
       .catch((err) => {
         console.log(err.message);
-      })
+      });
   });
+  /*MÉTODO POST | AGREGAR CONTACTO */
+  const addContacts = async (nomes, emails, telefones) => {
+    await fetch('http://localhost:3000/contatos', {
+      method: 'POST',
+      body: JSON.stringify({
+        nome: nomes,
+        email: emails,
+        telefone: telefones,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setContacts((contacts) => [data, ...contacts]);
+        setNomes('');
+        setEmails('');
+        setTelefones('');
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
   /* API FIN */
-
+  /* FUNCIONAMIENTO DEL FORMULARIO */
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addContacts(nomes, emails, telefones);
+    console.log('Contacto Agregado', e.target.value);
+  };
+  /* FORMULARIO FIN */
   return (
     <div className='App'>
       <header className='header header_wrap'>
@@ -59,7 +93,19 @@ function App() {
             })}
           </div>
         </div>
-        <ModalCreate state={showModal} changeState={setShowModal} />
+        <ModalCreate
+          state={showModal}
+          changeState={setShowModal}
+          contacts={contacts}
+          addContacts={setContacts}
+          sendForm={handleSubmit}
+          nombres={nomes}
+          enviarNombres={setNomes}
+          emails={emails}
+          enviarEmails={setEmails}
+          telefones={telefones}
+          enviarTelefones={setTelefones}
+        />
       </main>
     </div>
   );

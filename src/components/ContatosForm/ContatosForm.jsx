@@ -1,11 +1,19 @@
 import styled from 'styled-components';
 import './ContatosForm.css';
 
-function ContatosForm() {
+function ContatosForm({
+  enviarFormulario,
+  nome,
+  sendNome,
+  email,
+  sendEmail,
+  telefone,
+  sendTelefone,
+}) {
   return (
     <>
       <FormContainer>
-        <form onSubmit={(e) => e.preventDefault()}>
+        <form onSubmit={enviarFormulario}>
           <FormLabels>
             <ContainerInputs>
               <Label htmlFor='nome'>
@@ -21,6 +29,8 @@ function ContatosForm() {
                   placeholder='Ingrese Nome'
                   name='nome'
                   id='nome'
+                  value={nome}
+                  onChange={(e) => sendNome(e.target.value)}
                 />
               </Input>
             </ContainerInputs>
@@ -38,6 +48,8 @@ function ContatosForm() {
                   placeholder='Ingrese seu email'
                   name='email'
                   id='email'
+                  value={email}
+                  onChange={(e) => sendEmail(e.target.value)}
                 />
               </Input>
             </ContainerInputs>
@@ -55,6 +67,8 @@ function ContatosForm() {
                   placeholder='Ingrese seu telefone'
                   name='telefone'
                   id='telefone'
+                  value={telefone}
+                  onChange={(e) => sendTelefone(e.target.value)}
                 />
               </Input>
             </ContainerInputs>
