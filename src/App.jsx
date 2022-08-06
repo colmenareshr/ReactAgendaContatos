@@ -4,8 +4,6 @@ import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import './App.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
   /* HOOKS */
@@ -78,7 +76,8 @@ function App() {
     e.preventDefault();
     addContacts(nomes, emails, telefones);
     e.target.reset();
-    console.log('Contacto Agregado', e.target.value);
+    console.log('Contacto Agregado');
+    setShowModal(false);
   };
   /* FORMULARIO FIN */
   return (
