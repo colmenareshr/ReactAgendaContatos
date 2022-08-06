@@ -13,6 +13,7 @@ function App() {
   const [telefones, setTelefones] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
+  const [search, setSearch]= useState('');
 
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
@@ -115,10 +116,16 @@ function App() {
     }
   };
 
+  //BUSCADOR
+
+  const handleSearch = (e) => {
+    console.log("FUNCIONA", e);
+  }
+
   return (
     <div className='App'>
       <header className='header header_wrap'>
-        <Header />
+        <Header search={search} handleSearch={handleSearch} />
       </header>
       <main className='main'>
         <div className='sidebar_wraper'>
