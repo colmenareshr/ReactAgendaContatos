@@ -5,7 +5,7 @@ import './Header.css';
 import { useState } from 'react';
 
 
-function Header({ search, handleSearch }) {
+function Header({ handleSearch }) {
   const [sideBar, setSideBar] = useState(false);
 
   const showSidebar = () => setSideBar(!sideBar);
