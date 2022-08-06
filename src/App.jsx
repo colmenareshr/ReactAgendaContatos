@@ -13,13 +13,16 @@ function App() {
   const [telefones, setTelefones] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
-  const [search, setSearch]= useState('');
+  const [search, setSearch] = useState('');
+
+  //FIN HOOKS
 
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
     setShowModal(!showModal);
   };
   /*FIN VENTANA */
+
   /* API INICIO | MÉTODO GET */
   useEffect(() => {
     fetch('http://localhost:3000/contatos')
@@ -31,6 +34,9 @@ function App() {
         console.log(err.message);
       });
   });
+
+  // FIN GET
+
   /*MÉTODO POST | AGREGAR CONTACTO */
   const addContacts = async (nomes, emails, telefones) => {
     await fetch('http://localhost:3000/contatos', {
@@ -55,6 +61,8 @@ function App() {
         console.log(err.message);
       });
   };
+  // FIN POST
+
   /*METODO DELETE | ELIMINAR CONTACTO */
   const deleteContact = async (id) => {
     await fetch(`http://localhost:3000/contatos/${id}`, {
@@ -72,7 +80,8 @@ function App() {
     });
   };
 
-  /* API FIN */
+  /* FIN DELETE  */
+
   /* FUNCIONAMIENTO DEL FORMULARIO */
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -115,12 +124,21 @@ function App() {
       setShowModal(false);
     }
   };
+  // FIN EDITAR CONTACTOS
 
   //BUSCADOR
 
   const handleSearch = (e) => {
-    console.log("FUNCIONA", e);
-  }
+    setSearch(e.target.value);
+    console.log(e.target);
+  };
+
+  let results = !search
+    ? contacts
+    : contacts.filter((data) =>
+        data.nome.toLowerCase().includes(search.toLocaleLowerCase())
+      );
+  //FIN BUSCADOR
 
   return (
     <div className='App'>
@@ -140,10 +158,10 @@ function App() {
           </div>
           <div className='contatos_title'>
             Contatos
-            <span>({contacts.length})</span>
+            <span>({results.length})</span>
           </div>
           <div className='contatos_wraper'>
-            {contacts.map(function (contato) {
+            {results.map(function (contato) {
               return (
                 <Contatos
                   key={contato.id}
