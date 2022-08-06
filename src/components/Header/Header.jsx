@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import './Header.css';
 import { useState } from 'react';
-import SideBar from '../SideBar/SideBar';
 
-function Header({children}) {
+
+function Header({ search, handleSearch }) {
   const [sideBar, setSideBar] = useState(false);
 
   const showSidebar = () => setSideBar(!sideBar);
@@ -32,7 +32,9 @@ function Header({children}) {
               type='search'
               name='searh'
               id='search'
-              placeholder='Buscar contato... '
+              placeholder='Buscar contato...'
+              // value={search}
+              onChange={handleSearch}
             />
             <button className='btn_search'>
               <FontAwesomeIcon icon={faSearch} className='search' />
@@ -43,7 +45,6 @@ function Header({children}) {
           </div>
         </div>
       </nav>
-      
     </>
   );
 }
