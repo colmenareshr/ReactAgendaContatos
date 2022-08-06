@@ -89,16 +89,18 @@ function App() {
     fetch(`http://localhost:3000/contatos/${id}`)
       .then((response) => response.json())
       .then((data) => {
+        setIsUpdate(id);
         setNomes(data.nome);
         setEmails(data.email);
         setTelefones(data.telefone);
+        setShowModal(true);
         console.log("RESPUESTA UPDATE", data);
       })
       
   };
 
-  const handleUpdate = async (id) => {
-    await fetch(`http://localhost:3000/contatos/${id}`, {
+  const handleUpdate = async () => {
+    await fetch(`http://localhost:3000/contatos/${isUpdate}`, {
       method: 'PATCH',
       body: JSON.stringify({
         nome: nomes,
@@ -111,6 +113,7 @@ function App() {
     });
     if(response.ok)
     console.log("OKS", response.ok);
+    setIsUpdate(undefined);
     };
 
 
@@ -130,9 +133,7 @@ function App() {
             <div className='cont_name main_elements'>Nombre</div>
             <div className='cont_email main_elements'>Correo electrónico</div>
             <div className='cont_tel main_elements'>Número de teléfono</div>
-            <div className='cont_fechar main_elements'>
-            </div>
-
+            <div className='cont_fechar main_elements'></div>
           </div>
           <div className='contatos_title'>
             Contatos
@@ -165,9 +166,11 @@ function App() {
           enviarEmails={setEmails}
           telefones={telefones}
           enviarTelefones={setTelefones}
+          isUpdate={isUpdate}
+          setIsUpdate={setIsUpdate}
+          handleUpdate={handleUpdate}
         />
       </main>
-      
     </div>
   );
 }

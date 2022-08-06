@@ -15,7 +15,10 @@ function ModalCreate({
   enviarEmails,
   telefones,
   enviarTelefones,
-  sendForm
+  sendForm,
+  handleUpdate,
+  isUpdate,
+  setIsUpdate
 }) {
   return (
     <>
@@ -42,6 +45,9 @@ function ModalCreate({
               telefone={telefones}
               sendTelefone={enviarTelefones}
               enviarFormulario={sendForm}
+              handleUpdate={handleUpdate}
+              isUpdate={isUpdate}
+              setIsUpdate={setIsUpdate}
             />
           </ModalContainer>
         </ModalOverlay>
