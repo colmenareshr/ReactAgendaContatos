@@ -9,11 +9,13 @@ function ContatosForm({
   sendEmail,
   telefone,
   sendTelefone,
+  isUpdate,
+  handleUpdate,
 }) {
   return (
     <>
       <FormContainer>
-        <form onSubmit={enviarFormulario}>
+        <form onSubmit={isUpdate ? handleUpdate : enviarFormulario}>
           <FormLabels>
             <ContainerInputs>
               <Label htmlFor='nome'>
@@ -74,7 +76,7 @@ function ContatosForm({
             </ContainerInputs>
           </FormLabels>
           <Boton>
-            <button>Guardar</button>
+            <button>{isUpdate ? 'Alterar' : 'Guardar'}</button>
           </Boton>
         </form>
       </FormContainer>
