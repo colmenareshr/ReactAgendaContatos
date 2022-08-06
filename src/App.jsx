@@ -5,7 +5,6 @@ import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import './App.css';
 
-
 function App() {
   /* HOOKS */
   const [contacts, setContacts] = useState([]);
@@ -14,7 +13,6 @@ function App() {
   const [telefones, setTelefones] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
-
 
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
@@ -56,22 +54,22 @@ function App() {
         console.log(err.message);
       });
   };
-/*METODO DELETE | ELIMINAR CONTACTO */
+  /*METODO DELETE | ELIMINAR CONTACTO */
   const deleteContact = async (id) => {
-    await fetch(`http://localhost:3000/contatos/${id}`,{
+    await fetch(`http://localhost:3000/contatos/${id}`, {
       method: 'DELETE',
-    }).then((response) =>{
-      if(response.status === 200) {
+    }).then((response) => {
+      if (response.status === 200) {
         setContacts(
-          contacts.filter((contato) =>{
+          contacts.filter((contato) => {
             return contato.id !== id;
           })
         );
-      }else{
+      } else {
         return;
       }
-    })
-  }
+    });
+  };
 
   /* API FIN */
   /* FUNCIONAMIENTO DEL FORMULARIO */
@@ -84,7 +82,7 @@ function App() {
   };
   /* FORMULARIO FIN */
 
-/*EDITAR CONTACTOS*/  
+  /*EDITAR CONTACTOS*/
   const onUpdate = (id) => {
     fetch(`http://localhost:3000/contatos/${id}`)
       .then((response) => response.json())
@@ -94,9 +92,8 @@ function App() {
         setEmails(data.email);
         setTelefones(data.telefone);
         setShowModal(true);
-        console.log("RESPUESTA UPDATE", data);
-      })
-      
+        console.log('RESPUESTA UPDATE', data);
+      });
   };
 
   const handleUpdate = async () => {
@@ -111,13 +108,12 @@ function App() {
         'Content-type': 'application/json; charset=UTF-8',
       },
     });
-    if(response.ok)
-    console.log("OKS", response.ok);
-    setIsUpdate(undefined);
-    };
-
-
-
+    if (response.ok) {
+      console.log('OKS', response.ok);
+      setIsUpdate(undefined);
+      setShowModal(false);
+    }
+  };
 
   return (
     <div className='App'>

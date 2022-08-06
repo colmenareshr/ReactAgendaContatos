@@ -10,8 +10,8 @@ function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
           <div className='contatos_items item_nombre'>{nome}</div>
           <div className='contatos_items item_email'>{email}</div>
           <div className='contatos_items item_tel'>{telefone}</div>
-          <FontAwesomeIcon icon={faClose} onClick={deleteContacts} />
         </div>
+          <FontAwesomeIcon icon={faClose} onClick={deleteContacts} />
       </div>
     </>
   );

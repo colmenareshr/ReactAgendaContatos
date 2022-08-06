@@ -10,7 +10,7 @@ function ContatosForm({
   telefone,
   sendTelefone,
   isUpdate,
-  handleUpdate
+  handleUpdate,
 }) {
   return (
     <>
