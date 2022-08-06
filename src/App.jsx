@@ -89,7 +89,9 @@ function App() {
     fetch(`http://localhost:3000/contatos/${id}`)
       .then((response) => response.json())
       .then((data) => {
-        // setContacts(data);
+        setNomes(data.nome);
+        setEmails(data.email);
+        setTelefones(data.telefone);
         console.log("RESPUESTA UPDATE", data);
       })
       
