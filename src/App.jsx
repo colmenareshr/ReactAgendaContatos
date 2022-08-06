@@ -5,14 +5,17 @@ import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import './App.css';
 
+
 function App() {
   /* HOOKS */
+  const [contacts, setContacts] = useState([]);
   const [nomes, setNomes] = useState('');
   const [emails, setEmails] = useState('');
   const [telefones, setTelefones] = useState('');
-  const [contacts, setContacts] = useState([]);
-
   const [showModal, setShowModal] = useState(false);
+  const [isUpdate, setIsUpdate] = useState();
+
+
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
     setShowModal(!showModal);
@@ -80,6 +83,37 @@ function App() {
     setShowModal(false);
   };
   /* FORMULARIO FIN */
+
+/*EDITAR CONTACTOS*/  
+  const onUpdate = (id) => {
+    fetch(`http://localhost:3000/contatos/${id}`)
+      .then((response) => response.json())
+      .then((data) => {
+        // setContacts(data);
+        console.log("RESPUESTA UPDATE", data);
+      })
+      
+  };
+
+  const handleUpdate = async (id) => {
+    await fetch(`http://localhost:3000/contatos/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        nome: nomes,
+        email: emails,
+        telefone: telefones,
+      }),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    });
+    if(response.ok)
+    console.log("OKS", response.ok);
+    };
+
+
+
+
   return (
     <div className='App'>
       <header className='header header_wrap'>
@@ -111,6 +145,7 @@ function App() {
                   email={contato.email}
                   telefone={contato.telefone}
                   deleteContacts={() => deleteContact(contato.id)}
+                  updateContacto={() => onUpdate(contato.id)}
                 />
               );
             })}
@@ -130,6 +165,7 @@ function App() {
           enviarTelefones={setTelefones}
         />
       </main>
+      
     </div>
   );
 }

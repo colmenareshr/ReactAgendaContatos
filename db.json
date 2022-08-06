@@ -1,34 +1,28 @@
 {
   "contatos": [
     {
-      "id": 1,
-      "nome": "John Doe",
-      "email": "john@doe.email",
-      "telefone": "1111-1111"
-    },
-    {
-      "id": 2,
-      "nome": "Foo Bar",
-      "email": "john@doe.email",
-      "telefone": "2222-2222"
-    },
-    {
-      "id": 3,
-      "nome": "Alice and Bob",
-      "email": "john@doe.email",
-      "telefone": "3333-3333"
-    },
-    {
       "nome": "Maria",
       "email": "maria@maria.com",
       "telefone": "1245687898",
       "id": 18
     },
     {
+      "nome": "Humberto",
+      "email": "colmenareshr@gmail.com",
+      "telefone": "04244248549",
+      "id": 20
+    },
+    {
+      "nome": "Colmenares",
+      "email": "humbertofreela@gmail.com",
+      "telefone": "95999035411",
+      "id": 21
+    },
+    {
       "nome": "Humberto Colmenares",
       "email": "colmenareshr@gmail.com",
       "telefone": "04161403635",
-      "id": 19
+      "id": 22
     }
   ]
 }
