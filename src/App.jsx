@@ -130,7 +130,6 @@ function App() {
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
-    console.log(e.target);
   };
 
   let results = !search
