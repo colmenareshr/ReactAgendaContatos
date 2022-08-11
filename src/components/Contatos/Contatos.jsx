@@ -1,6 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
-import './Contatos.css';
 import styled from 'styled-components';
 
 function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {

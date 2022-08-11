@@ -14,6 +14,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
   const [search, setSearch] = useState('');
+  const [actualizar, setActualizar] = useState();
 
   //FIN HOOKS
 
@@ -33,7 +34,7 @@ function App() {
       .catch((err) => {
         console.log(err.message);
       });
-  });
+  }, []);
 
   // FIN GET
 
@@ -85,8 +86,8 @@ function App() {
   /* FUNCIONAMIENTO DEL FORMULARIO */
   const handleSubmit = (e) => {
     e.preventDefault();
-    addContacts(nomes, emails, telefones);
     e.target.reset();
+    addContacts(nomes, emails, telefones);
     console.log('Contacto Agregado');
     setShowModal(false);
   };
@@ -106,7 +107,7 @@ function App() {
       });
   };
 
-  const handleUpdate = async () => {
+  const handleUpdate = async (e) => {
     await fetch(`http://localhost:3000/contatos/${isUpdate}`, {
       method: 'PATCH',
       body: JSON.stringify({
@@ -120,6 +121,8 @@ function App() {
     });
     if (response.ok) {
       console.log('OKS', response.ok);
+      e.preventDefault();
+      setActualizar(true);
       setIsUpdate(undefined);
       setShowModal(false);
     }
@@ -141,9 +144,8 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='header header_wrap'>
-        <Header search={search} handleSearch={handleSearch} />
-      </header>
+      <Header search={search} handleSearch={handleSearch} />
+
       <main className='main'>
         <div className='sidebar_wraper'>
           <SideBar mostrar={handleShowModal} />

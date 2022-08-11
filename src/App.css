@@ -11,13 +11,9 @@ body {
   background-color: #fff;
   font-family: Roboto, sans-serif;
   color: #5f6368;
+ 
 }
-.header {
-  height: 6rem;
-  width: 100%;
-  padding: 1rem;
-  border: 1px solid #f1f3f4;
-}
+
 
 .main {
   width: 100%;
