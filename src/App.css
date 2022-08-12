@@ -38,6 +38,18 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
+.contatos_title {
+  letter-spacing: 0.07272727em;
+  font-family: Roboto, sans-serif;
+  font-size: 0.688rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+  display: flex;
+  padding: 20px;
+  max-height: 20px;
+}
+
 .main_elements {
   display: table-cell;
   letter-spacing: 0.01785714em;
