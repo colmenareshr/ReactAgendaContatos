@@ -24,10 +24,7 @@ export default Contatos;
 const ContactsContainer = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  &:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+  
 `;
 
 const IconDeleteContainer = styled.div`
@@ -50,7 +47,6 @@ const ContactsItemsContainer = styled.div`
   width: 100%;
   display: table;
   table-layout: fixed;
-  position: relative;
   &:hover {
     background-color: #e7eeff;
     background-size: 100% 112px;
@@ -59,11 +55,7 @@ const ContactsItemsContainer = styled.div`
 
 const ContactsItems = styled.div`
   display: table-cell;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
-  white-space: nowrap;
   border-bottom: 1px solid #f1f3f4;
-  padding: 20px;
+  padding: 25px;
   cursor: pointer;
 `;

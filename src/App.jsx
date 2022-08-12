@@ -14,14 +14,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
   const [search, setSearch] = useState('');
-  const [showSidebar, setShowSidebar] = useState(true);
-
   //FIN HOOKS
-
-  //MOSTRAR SIDEBAR
-  const handleShowSidebar = () =>{
-    setShowSidebar(!showSidebar);
-  }
 
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
@@ -149,7 +142,6 @@ function App() {
     <div className='App'>
       <header className='header header_wrap'>
         <Header
-          mostrarSidebar={handleShowSidebar}
           handleSearch={handleSearch}
         />
       </header>
