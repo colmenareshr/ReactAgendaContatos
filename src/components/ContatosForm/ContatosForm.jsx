@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import './ContatosForm.css';
 
 function ContatosForm({
   enviarFormulario,
