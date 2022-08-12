@@ -1,24 +1,10 @@
 import Avatar from '../Avatar/Avatar';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
 import styled from 'styled-components';
-function Header({ handleSearch }) {
-  const [sideBar, setSideBar] = useState(false);
-
-  const showSidebar = () => setSideBar(!sideBar);
-
+function Header({ handleSearch, mostrarSidebar }) {
   return (
     <HeaderContainer>
       <NavContainer>
         <Nav>
-          <NavMenu onClick={showSidebar}>
-            <FontAwesomeIcon
-              icon={faBars}
-              className='nav_bars'
-              onClick={showSidebar}
-            />
-          </NavMenu>
           <MenuTitle>
             <img src='src/assets/contacts.png' alt='agenda contatos' />
             <h1>Agenda de Contatos</h1>
@@ -29,7 +15,7 @@ function Header({ handleSearch }) {
             type='search'
             name='searh'
             id='search'
-            placeholder='Buscar contato...'
+            placeholder='Procurar contato...'
             onChange={handleSearch}
           />
         </NavSearch>

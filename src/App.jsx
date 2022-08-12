@@ -14,8 +14,14 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
   const [search, setSearch] = useState('');
+  const [showSidebar, setShowSidebar] = useState(true);
 
   //FIN HOOKS
+
+  //MOSTRAR SIDEBAR
+  const handleShowSidebar = () =>{
+    setShowSidebar(!showSidebar);
+  }
 
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
@@ -142,7 +148,10 @@ function App() {
   return (
     <div className='App'>
       <header className='header header_wrap'>
-        <Header search={search} handleSearch={handleSearch} />
+        <Header
+          mostrarSidebar={handleShowSidebar}
+          handleSearch={handleSearch}
+        />
       </header>
       <main className='main'>
         <div className='sidebar_wraper'>
@@ -150,9 +159,9 @@ function App() {
         </div>
         <div className='main_container-wraper'>
           <div className='container_titles'>
-            <div className='cont_name main_elements'>Nombre</div>
-            <div className='cont_email main_elements'>Correo electrónico</div>
-            <div className='cont_tel main_elements'>Número de teléfono</div>
+            <div className='cont_name main_elements'>Nome</div>
+            <div className='cont_email main_elements'>Correio eletrônico</div>
+            <div className='cont_tel main_elements'>Número de telefone</div>
             <div className='cont_fechar main_elements'></div>
           </div>
           <div className='contatos_title'>
