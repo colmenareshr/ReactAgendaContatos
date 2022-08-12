@@ -11,9 +11,9 @@ function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
           <ContactsItems>{email}</ContactsItems>
           <ContactsItems>{telefone}</ContactsItems>
         </ContactsItemsContainer>
-        <div>
+        <IconDeleteContainer>
           <FontAwesomeIcon icon={faClose} onClick={deleteContacts} />
-        </div>
+        </IconDeleteContainer>
       </ContactsContainer>
     </>
   );
@@ -22,10 +22,28 @@ function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
 export default Contatos;
 
 const ContactsContainer = styled.div`
-  background-image: linear-gradient(#fff, 57px, #fafafa, 57px);
   display: flex;
   align-items: center;
   justify-content: space-between;
+  &:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+`;
+
+const IconDeleteContainer = styled.div`
+  height: 30px;
+  width: 30px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9;
+
+  &:hover{
+    background-color: red;
+    color: #fff;
+
+  }
 `;
 
 const ContactsItemsContainer = styled.div`
@@ -33,7 +51,6 @@ const ContactsItemsContainer = styled.div`
   display: table;
   table-layout: fixed;
   position: relative;
-
   &:hover {
     background-color: #e7eeff;
     background-size: 100% 112px;
