@@ -7,7 +7,7 @@ function Header({ handleSearch, mostrarSidebar }) {
         <Nav>
           <MenuTitle>
             <img src='src/assets/contacts.png' alt='agenda contatos' />
-            <h1>Agenda de Contatos</h1>
+            <h1>Contatos</h1>
           </MenuTitle>
         </Nav>
         <NavSearch>
@@ -37,7 +37,8 @@ const HeaderContainer = styled.header`
 
 const NavContainer = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex: 1 1;
   align-items: center;
   justify-content: space-between;
 `;
@@ -77,8 +78,8 @@ const MenuTitle = styled.div`
   }
 
   h1 {
-    font-size: 1.5rem;
-    line-height: 1.4rem;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
     font-weight: 500;
     font-family: 'Work Sans', sans-serif;
   }
