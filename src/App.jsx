@@ -28,7 +28,6 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setContacts(data);
-        console.log(data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -103,7 +102,7 @@ function App() {
       });
   };
 
-  const handleUpdate = async () => {
+  const updateContacts = async () => {
     await fetch(`http://localhost:3000/contatos/${isUpdate}`, {
       method: 'PATCH',
       body: JSON.stringify({
@@ -114,17 +113,23 @@ function App() {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    });
-    if (response.ok) {
-      console.log('OKS', response.ok);
-      setIsUpdate(undefined);
-      setShowModal(false);
-    }
+    })
+    setIsUpdate(undefined);
+    setNomes('');
+    setEmails('');
+    setTelefones('');
+    fetchContacts();
   };
+
+  const handleUpdate = (e) =>{
+    e.preventDefault();
+    updateContacts();
+    console.log("Contato editado");
+    setShowModal(false);
+  }
   // FIN EDITAR CONTACTOS
 
   //BUSCADOR
-
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -138,9 +143,8 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='header header_wrap'>
         <Header handleSearch={handleSearch} />
-      </header>
+      
       <main className='main'>
         <div className='sidebar_wraper'>
           <SideBar mostrar={handleShowModal} />
