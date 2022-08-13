@@ -23,16 +23,21 @@ function App() {
   /*FIN VENTANA */
 
   /* API INICIO | MÉTODO GET */
-  useEffect(() => {
+  function fetchContacts() {
     fetch('http://localhost:3000/contatos')
       .then((response) => response.json())
       .then((data) => {
         setContacts(data);
+        console.log(data);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  });
+  }
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
 
   // FIN GET
 
@@ -48,17 +53,11 @@ function App() {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setContacts((contacts) => [data, ...contacts]);
-        setNomes('');
-        setEmails('');
-        setTelefones('');
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    });
+    setNomes('');
+    setEmails('');
+    setTelefones('');
+    fetchContacts();
   };
   // FIN POST
 
@@ -85,7 +84,6 @@ function App() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addContacts(nomes, emails, telefones);
-    e.target.reset();
     console.log('Contacto Agregado');
     setShowModal(false);
   };
@@ -141,9 +139,7 @@ function App() {
   return (
     <div className='App'>
       <header className='header header_wrap'>
-        <Header
-          handleSearch={handleSearch}
-        />
+        <Header handleSearch={handleSearch} />
       </header>
       <main className='main'>
         <div className='sidebar_wraper'>
