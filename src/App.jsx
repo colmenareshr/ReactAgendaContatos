@@ -28,7 +28,6 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         setContacts(data);
-        console.log(data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -116,9 +115,12 @@ function App() {
       },
     })
     setIsUpdate(undefined);
+    setNomes('');
+    setEmails('');
+    setTelefones('');
     fetchContacts();
   };
-  
+
   const handleUpdate = (e) =>{
     e.preventDefault();
     updateContacts();
@@ -128,7 +130,6 @@ function App() {
   // FIN EDITAR CONTACTOS
 
   //BUSCADOR
-
   const handleSearch = (e) => {
     setSearch(e.target.value);
   };
@@ -142,9 +143,8 @@ function App() {
 
   return (
     <div className='App'>
-      <header className='header header_wrap'>
         <Header handleSearch={handleSearch} />
-      </header>
+      
       <main className='main'>
         <div className='sidebar_wraper'>
           <SideBar mostrar={handleShowModal} />
