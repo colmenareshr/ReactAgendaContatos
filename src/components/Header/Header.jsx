@@ -5,7 +5,6 @@ import { useState } from 'react';
 
 
 function Header({ }) {
-  const [search, setSearch] = useState('');
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
