@@ -1,6 +1,8 @@
 import Avatar from '../Avatar/Avatar';
 import styled from 'styled-components';
-function Header({ handleSearch, mostrarSidebar }) {
+
+
+function Header({ handleSearch }) {
   return (
     <HeaderContainer>
       <NavContainer>
@@ -31,8 +33,9 @@ export default Header;
 const HeaderContainer = styled.header`
   height: 6rem;
   width: 100%;
+  max-width: 100vw;
   padding: 1rem;
-  border: 1px solid #f1f3f4;
+  border-bottom: 1px solid #f1f3f4;
 `;
 
 const NavContainer = styled.div`

@@ -3,7 +3,7 @@ import Contatos from './components/Contatos/Contatos';
 import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
-import './App.css';
+import styled from 'styled-components';
 
 function App() {
   /* HOOKS */
@@ -14,6 +14,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
   const [search, setSearch] = useState('');
+
   //FIN HOOKS
 
   /*AGREGAR VENTANA MODAL CREAR*/
@@ -113,7 +114,7 @@ function App() {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
+    });
     setIsUpdate(undefined);
     setNomes('');
     setEmails('');
@@ -121,12 +122,12 @@ function App() {
     fetchContacts();
   };
 
-  const handleUpdate = (e) =>{
+  const handleUpdate = (e) => {
     e.preventDefault();
     updateContacts();
-    console.log("Contato editado");
+    console.log('Contato editado');
     setShowModal(false);
-  }
+  };
   // FIN EDITAR CONTACTOS
 
   //BUSCADOR
@@ -143,23 +144,22 @@ function App() {
 
   return (
     <div className='App'>
-        <Header handleSearch={handleSearch} />
-      
-      <main className='main'>
-        <div className='sidebar_wraper'>
+      <Header handleSearch={handleSearch} />
+
+      <MainContainer>
+        <div>
           <SideBar mostrar={handleShowModal} />
         </div>
-        <div className='main_container-wraper'>
-          <div className='container_titles'>
-            <div className='cont_name main_elements'>Nome</div>
-            <div className='cont_email main_elements'>Correio eletrônico</div>
-            <div className='cont_tel main_elements'>Número de telefone</div>
-            <div className='cont_fechar main_elements'></div>
-          </div>
-          <div className='contatos_title'>
+        <MainContainerTable>
+          <TableHeader>
+            <TableItems>Nome</TableItems>
+            <TableItems>Correio eletrônico</TableItems>
+            <TableItems>Número de telefone</TableItems>
+          </TableHeader>
+          <ContactsCounter>
             Contatos
             <span>({results.length})</span>
-          </div>
+          </ContactsCounter>
           <div className='contatos_wraper'>
             {results.map(function (contato) {
               return (
@@ -174,7 +174,7 @@ function App() {
               );
             })}
           </div>
-        </div>
+        </MainContainerTable>
         <ModalCreate
           state={showModal}
           changeState={setShowModal}
@@ -191,9 +191,57 @@ function App() {
           setIsUpdate={setIsUpdate}
           handleUpdate={handleUpdate}
         />
-      </main>
+      </MainContainer>
     </div>
   );
 }
 
 export default App;
+
+const MainContainer = styled.main`
+  width: 100%;
+  max-width: 1400px;
+  min-height: 100vh;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+`;
+
+const MainContainerTable = styled.div`
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  flex-direction: column;
+  table-layout: fixed;
+`;
+
+const ContactsCounter = styled.div`
+  letter-spacing: 0.07272727em;
+  font-family: Roboto, sans-serif;
+  font-size: 0.688rem;
+  font-weight: 500;
+  line-height: 1rem;
+  text-transform: uppercase;
+`;
+
+const TableHeader = styled.div`
+  width: 100%;
+  padding: 0 1.9rem;
+  display: table;
+  table-layout: fixed;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+`;
+
+const TableItems = styled.div`
+  display: table-cell;
+  border-collapse: collapse;
+  padding: 2rem 0;
+  letter-spacing: 1px;
+  font-family: Roboto, sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  line-height: 1.25rem;
+  vertical-align: middle;
+`;
+
+
