@@ -3,7 +3,6 @@ import Contatos from './components/Contatos/Contatos';
 import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
-// import './App.css';
 import styled from 'styled-components';
 
 function App() {
@@ -221,12 +220,12 @@ const MainContainerTable = styled.div`
     font-weight: 500;
     line-height: 1rem;
     text-transform: uppercase;
-  
   }
 `;
 
 const TableHeader = styled.div`
-width: 100%;
+  width: 100%;
+  padding: 0 1.5rem;
   display: table;
   table-layout: fixed;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
@@ -238,7 +237,7 @@ const TableItems = styled.div`
   padding: 2rem 0;
   letter-spacing: 1px;
   font-family: Roboto, sans-serif;
-  font-size: 0.874rem;
+  font-size: 0.9rem;
   font-weight: 500;
   line-height: 1.25rem;
   vertical-align: middle;

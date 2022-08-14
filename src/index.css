@@ -12,8 +12,5 @@ body {
   background-color: #fff;
   font-family: Roboto, sans-serif;
   color: #5f6368;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: baseline;
+  
 }
