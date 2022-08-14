@@ -4,7 +4,6 @@ import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ContactList from './components/ContactList/ContactList';
 
 function App() {
   /* HOOKS */
@@ -145,7 +144,7 @@ function App() {
 
   return (
     <div className='App'>
-      <Header />
+      <Header handleSearch={handleSearch} />
 
       <MainContainer>
         <div>

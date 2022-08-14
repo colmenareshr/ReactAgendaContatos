@@ -1,16 +1,8 @@
 import Avatar from '../Avatar/Avatar';
 import styled from 'styled-components';
-import ContactList from '../ContactList/ContactList';
-import { useState } from 'react';
 
 
-function Header({ }) {
-
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-    ContactList    
-  };
-  
+function Header({ handleSearch }) {
   return (
     <HeaderContainer>
       <NavContainer>
