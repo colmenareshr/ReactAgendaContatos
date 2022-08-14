@@ -4,7 +4,6 @@ import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import ModalConfirmar from './components/Modales/ModalConfirmar';
 
 function App() {
   /* HOOKS */
@@ -105,7 +104,7 @@ function App() {
         setEmails(data.email);
         setTelefones(data.telefone);
         setShowModal(true);
-        console.log('RESPUESTA UPDATE', data);
+        console.log('Atualizar');
       });
   };
 
