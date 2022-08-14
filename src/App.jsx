@@ -77,6 +77,7 @@ function App() {
             return contato.id !== id;
           })
         );
+
       } else {
         return;
       }
@@ -173,7 +174,7 @@ function App() {
                   nome={contato.nome}
                   email={contato.email}
                   telefone={contato.telefone}
-                  deleteContacts={() => deleteContact(contato.id)}
+                  deleteContact={() => deleteContact(contato.id)}
                   updateContacto={() => onUpdate(contato.id)}
                 />
               );
@@ -196,7 +197,6 @@ function App() {
           setIsUpdate={setIsUpdate}
           handleUpdate={handleUpdate}
         />
-        <ModalConfirmar />
       </MainContainer>
     </div>
   );

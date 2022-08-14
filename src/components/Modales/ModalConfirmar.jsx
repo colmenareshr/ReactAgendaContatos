@@ -2,21 +2,30 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import styled from 'styled-components';
 
-function ModalConfirmar({ handleClick }) {
+function ModalConfirmar({ modalConfirm, setModalConfirm, deleteContact }) {
+
+  
   return (
     <>
-      <ModalOverlayContainer>
-        <ModalConfirlmarContainer>
-          <ModalConfirmarHeader>
-            <h3>Retirar o contato?</h3>
-          </ModalConfirmarHeader>
-          <CloseConfirmarButton>
-            <FontAwesomeIcon icon={faClose} onClick={handleClick} />
-          </CloseConfirmarButton>
-          <button className='confirmBtn'>Confirmar</button>
-          <button className='cancelBtn'>Cancelar</button>
-        </ModalConfirlmarContainer>
-      </ModalOverlayContainer>
+      {modalConfirm && (
+        <ModalOverlayContainer>
+          <ModalConfirlmarContainer>
+            <ModalConfirmarHeader>
+              <h3>Retirar o contato?</h3>
+            </ModalConfirmarHeader>
+            <CloseConfirmarButton>
+              <FontAwesomeIcon
+                icon={faClose}
+                onClick={() => setModalConfirm(!modalConfirm)}
+              />
+            </CloseConfirmarButton>
+            <button className='confirmBtn' onClick={deleteContact}>
+              Confirmar
+            </button>
+            <button className='cancelBtn' onClick={()=> setModalConfirm(!modalConfirm)}>Cancelar</button>
+          </ModalConfirlmarContainer>
+        </ModalOverlayContainer>
+      )}
     </>
   );
 }
