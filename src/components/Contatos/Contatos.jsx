@@ -3,6 +3,7 @@ import { faClose } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
 
 function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
+  
   return (
     <>
       <ContactsContainer>
@@ -15,6 +16,8 @@ function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
           <FontAwesomeIcon icon={faClose} onClick={deleteContacts} />
         </IconDeleteContainer>
       </ContactsContainer>
+
+      
     </>
   );
 }
