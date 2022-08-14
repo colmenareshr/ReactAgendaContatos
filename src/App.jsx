@@ -4,6 +4,7 @@ import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import ContactList from './components/ContactList/ContactList';
 
 function App() {
   /* HOOKS */
@@ -13,7 +14,6 @@ function App() {
   const [telefones, setTelefones] = useState('');
   const [showModal, setShowModal] = useState(false);
   const [isUpdate, setIsUpdate] = useState();
-  const [search, setSearch] = useState('');
   //FIN HOOKS
 
   /*AGREGAR VENTANA MODAL CREAR*/
@@ -23,20 +23,20 @@ function App() {
   /*FIN VENTANA */
 
   /* API INICIO | MÉTODO GET */
-  function fetchContacts() {
-    fetch('http://localhost:3000/contatos')
-      .then((response) => response.json())
-      .then((data) => {
-        setContacts(data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }
+  // function fetchContacts() {
+  //   fetch('http://localhost:3000/contatos')
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setContacts(data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // }
 
-  useEffect(() => {
-    fetchContacts();
-  }, []);
+  // useEffect(() => {
+  //   fetchContacts();
+  // }, []);
 
   // FIN GET
 
@@ -130,35 +130,36 @@ function App() {
   // FIN EDITAR CONTACTOS
 
   //BUSCADOR
-  const handleSearch = (e) => {
-    setSearch(e.target.value);
-  };
+  // const handleSearch = (e) => {
+  //   setSearch(e.target.value);
+  // };
 
-  let results = !search
-    ? contacts
-    : contacts.filter((data) =>
-        data.nome.toLowerCase().includes(search.toLocaleLowerCase())
-      );
+  // let results = !search
+  //   ? contacts
+  //   : contacts.filter((data) =>
+  //       data.nome.toLowerCase().includes(search.toLocaleLowerCase())
+  //     );
   //FIN BUSCADOR
 
   return (
     <div className='App'>
-      <Header handleSearch={handleSearch} />
+      <Header />
 
       <MainContainer>
-        <div className='sidebar_wraper'>
+        <div>
           <SideBar mostrar={handleShowModal} />
         </div>
-        <MainContainerTable>
+        <ContactList />
+        {/* <MainContainerTable>
           <TableHeader>
             <TableItems>Nome</TableItems>
             <TableItems>Correio eletrônico</TableItems>
             <TableItems>Número de telefone</TableItems>
           </TableHeader>
-          <div className='contatos_title'>
+          <ContactsCounter>
             Contatos
             <span>({results.length})</span>
-          </div>
+          </ContactsCounter>
           <div className='contatos_wraper'>
             {results.map(function (contato) {
               return (
@@ -173,7 +174,7 @@ function App() {
               );
             })}
           </div>
-        </MainContainerTable>
+        </MainContainerTable> */}
         <ModalCreate
           state={showModal}
           changeState={setShowModal}
@@ -206,39 +207,4 @@ const MainContainer = styled.main`
   align-items: flex-start;
 `;
 
-const MainContainerTable = styled.div`
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-  flex-direction: column;
-  table-layout: fixed;
 
-  .contatos_title {
-    letter-spacing: 0.07272727em;
-    font-family: Roboto, sans-serif;
-    font-size: 0.688rem;
-    font-weight: 500;
-    line-height: 1rem;
-    text-transform: uppercase;
-  }
-`;
-
-const TableHeader = styled.div`
-  width: 100%;
-  padding: 0 1.5rem;
-  display: table;
-  table-layout: fixed;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-`;
-
-const TableItems = styled.div`
-  display: table-cell;
-  border-collapse: collapse;
-  padding: 2rem 0;
-  letter-spacing: 1px;
-  font-family: Roboto, sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.25rem;
-  vertical-align: middle;
-`;

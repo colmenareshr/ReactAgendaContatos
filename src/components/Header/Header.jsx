@@ -1,6 +1,17 @@
 import Avatar from '../Avatar/Avatar';
 import styled from 'styled-components';
-function Header({ handleSearch, mostrarSidebar }) {
+import ContactList from '../ContactList/ContactList';
+import { useState } from 'react';
+
+
+function Header({ }) {
+  const [search, setSearch] = useState('');
+
+  const handleSearch = (e) => {
+    setSearch(e.target.value);
+    ContactList    
+  };
+  
   return (
     <HeaderContainer>
       <NavContainer>
