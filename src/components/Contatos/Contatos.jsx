@@ -11,7 +11,6 @@ function Contatos({ nome, email, telefone, deleteContact, updateContacto }) {
     setModalConfirm(true);
     console.log('Boton borrar clickado');
   };
-
   return (
     <>
       <ContactsContainer>
