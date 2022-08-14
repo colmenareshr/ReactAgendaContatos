@@ -32,6 +32,7 @@ function ModalConfirmar({ modalConfirm, setModalConfirm, deleteContact }) {
 
 export default ModalConfirmar;
 
+
 const ModalOverlayContainer = styled.div`
   width: 100vw;
   height: 100vh;
