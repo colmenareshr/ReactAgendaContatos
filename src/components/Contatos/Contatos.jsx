@@ -1,8 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClose } from '@fortawesome/free-solid-svg-icons';
 import styled from 'styled-components';
+import ModalConfirmar from '../Modales/ModalConfirmar';
+import { useState } from 'react';
 
-function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
+function Contatos({ nome, email, telefone, deleteContact, updateContacto }) {
+  const [modalConfirm, setModalConfirm] = useState(false);
+
+  const handleConfirm = () => {
+    setModalConfirm(true);
+    console.log('Boton borrar clickado');
+  };
   return (
     <>
       <ContactsContainer>
@@ -12,9 +20,14 @@ function Contatos({ nome, email, telefone, deleteContacts, updateContacto }) {
           <ContactsItems>{telefone}</ContactsItems>
         </ContactsItemsContainer>
         <IconDeleteContainer>
-          <FontAwesomeIcon icon={faClose} onClick={deleteContacts} />
+          <FontAwesomeIcon icon={faClose} onClick={handleConfirm} />
         </IconDeleteContainer>
       </ContactsContainer>
+      <ModalConfirmar
+        modalConfirm={modalConfirm}
+        setModalConfirm={setModalConfirm}
+        deleteContact={deleteContact}
+      />
     </>
   );
 }
