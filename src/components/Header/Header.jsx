@@ -34,7 +34,7 @@ const HeaderContainer = styled.header`
   height: 6rem;
   width: 100%;
   max-width: 100vw;
-  margin: 2rem 0;
+  margin: 1rem 0;
   padding: 0 1rem;
   border-bottom: 1px solid #f1f3f4;
 `;
