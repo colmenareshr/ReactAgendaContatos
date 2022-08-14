@@ -26,7 +26,7 @@ function ModalCreate({
         <ModalOverlay>
           <ModalContainer>
             <ModalHeader>
-              <h3>Crear novo contato</h3>
+              <h3>{isUpdate? 'Editar contato' :  'Crear novo contato'}</h3>
             </ModalHeader>
             <CloseButton>
               <FontAwesomeIcon
