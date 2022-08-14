@@ -3,9 +3,8 @@ import Contatos from './components/Contatos/Contatos';
 import SideBar from './components/SideBar/SideBar';
 import ModalCreate from './components/Modales/ModalCreate';
 import { useEffect, useState } from 'react';
-import './App.css';
+// import './App.css';
 import styled from 'styled-components';
-
 
 function App() {
   /* HOOKS */
@@ -78,7 +77,6 @@ function App() {
       }
     });
   };
-
   /* FIN DELETE  */
 
   /* FUNCIONAMIENTO DEL FORMULARIO */
@@ -115,7 +113,7 @@ function App() {
       headers: {
         'Content-type': 'application/json; charset=UTF-8',
       },
-    })
+    });
     setIsUpdate(undefined);
     setNomes('');
     setEmails('');
@@ -123,12 +121,12 @@ function App() {
     fetchContacts();
   };
 
-  const handleUpdate = (e) =>{
+  const handleUpdate = (e) => {
     e.preventDefault();
     updateContacts();
-    console.log("Contato editado");
+    console.log('Contato editado');
     setShowModal(false);
-  }
+  };
   // FIN EDITAR CONTACTOS
 
   //BUSCADOR
@@ -147,8 +145,8 @@ function App() {
     <div className='App'>
       <Header handleSearch={handleSearch} />
 
-      <main className='main'>
-        <div className='sidebar_wraper'>
+      <MainContainer>
+        <div>
           <SideBar mostrar={handleShowModal} />
         </div>
         <MainContainerTable>
@@ -159,10 +157,10 @@ function App() {
           </TableHeader>
           <ContactsCounter>
             Contatos
-            <span>({contacts.length})</span>
+            <span>({results.length})</span>
           </ContactsCounter>
           <div className='contatos_wraper'>
-            {contacts.map(function (contato) {
+            {results.map(function (contato) {
               return (
                 <Contatos
                   key={contato.id}
@@ -192,12 +190,21 @@ function App() {
           setIsUpdate={setIsUpdate}
           handleUpdate={handleUpdate}
         />
-      </main>
+      </MainContainer>
     </div>
   );
 }
 
 export default App;
+
+const MainContainer = styled.main`
+  width: 100%;
+  min-height: 100vh;
+  padding: 0 16px 20px;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: flex-start;
+`;
 
 const MainContainerTable = styled.div`
   display: flex;

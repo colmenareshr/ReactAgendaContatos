@@ -1,6 +1,6 @@
 import Avatar from '../Avatar/Avatar';
 import styled from 'styled-components';
-function Header({ handleSearch, mostrarSidebar }) {
+function Header({ handleSearch }) {
   return (
     <HeaderContainer>
       <NavContainer>
