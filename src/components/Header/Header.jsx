@@ -34,7 +34,8 @@ const HeaderContainer = styled.header`
   height: 6rem;
   width: 100%;
   max-width: 100vw;
-  padding: 1rem;
+  margin: 2rem 0;
+  padding: 0 1rem;
   border-bottom: 1px solid #f1f3f4;
 `;
 
@@ -53,23 +54,7 @@ const Nav = styled.nav`
   justify-content: center;
 `;
 
-const NavMenu = styled.div`
-  .nav_bars {
-    height: 1.5rem;
-    width: 1.5rem;
-    padding: 0.8rem;
-    border-radius: 50%;
 
-    &:hover {
-      height: 1.5rem;
-      width: 1.5rem;
-      padding: 0.8rem;
-      background-color: #ebecec;
-      border-radius: 50%;
-      cursor: pointer;
-    }
-  }
-`;
 const MenuTitle = styled.div`
   display: flex;
   gap: 1rem;
@@ -81,9 +66,10 @@ const MenuTitle = styled.div`
   }
 
   h1 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.2rem;
     font-weight: 500;
+    letter-spacing: 1px;
     font-family: 'Work Sans', sans-serif;
   }
 `;
