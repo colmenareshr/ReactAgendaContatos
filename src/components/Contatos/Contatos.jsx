@@ -24,7 +24,7 @@ export default Contatos;
 const ContactsContainer = styled.div`
   display: flex;
   align-items: center;
-  
+  flex-wrap: nowrap;
 `;
 
 const IconDeleteContainer = styled.div`
@@ -36,7 +36,7 @@ const IconDeleteContainer = styled.div`
   justify-content: center;
   z-index: 9;
 
-  &:hover{
+  &:hover {
     background-color: red;
     color: #fff;
   }
@@ -47,7 +47,7 @@ const ContactsItemsContainer = styled.div`
   display: table;
   table-layout: fixed;
   &:hover {
-    margin-top: .3rem;
+    margin-top: 0.3rem;
     border-radius: 5px;
     box-shadow: 0 1px 25px rgb(143 170 141 / 35%);
   }
