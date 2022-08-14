@@ -20,6 +20,9 @@ function App() {
   /*AGREGAR VENTANA MODAL CREAR*/
   const handleShowModal = () => {
     setShowModal(!showModal);
+    setNomes('');
+    setEmails('');
+    setTelefones('');
   };
   /*FIN VENTANA */
 
