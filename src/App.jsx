@@ -23,6 +23,7 @@ function App() {
     setNomes('');
     setEmails('');
     setTelefones('');
+    onUpdate('');
   };
   /*FIN VENTANA */
 
