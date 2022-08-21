@@ -3,7 +3,13 @@
 Creando una agenda de contacto en React
 
 ## Herramientas utilizadas
-Para el entorno de desarrollo se utilizó Vite y para simular consumir una API Json-Server. Además, en el proyecto se utilizó Styled Components para los estilos de cada componente, la librería de Iconos de FontAwesoma, así como algunas fuentes de Google. 
+Para el entorno de desarrollo se utilizó [Vite](https://vitejs.dev/) y para simular consumir una API [Json-Server](https://www.npmjs.com/package/json-server). Además, en el proyecto se utilizó [Styled Components](https://styled-components.com/) para los estilos de cada componente, la librería de Iconos de FontAwesoma, así como algunas fuentes de Google. 
+
+## Comandos para inicializar 
+-Para inicializar el servidor: $npm run server
+
+-Para inicializar la App: $npm run dev
+
 
 ### Sobre mi
 
